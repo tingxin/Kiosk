@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2A396B97-9B1A-4044-AC37-D38238BE3DCE}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Drawingboard</RootNamespace>
+    <AssemblyName>Drawingboard</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IACore">
+      <HintPath>..\Lib\IACore.dll</HintPath>
+    </Reference>
+    <Reference Include="IALoader">
+      <HintPath>..\Lib\IALoader.dll</HintPath>
+    </Reference>
+    <Reference Include="IAWinFX">
+      <HintPath>..\Lib\IAWinFX.dll</HintPath>
+    </Reference>
+    <Reference Include="Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Log.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Ink.Analysis">
+      <HintPath>..\Lib\Microsoft.Ink.Analysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Surface, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.Surface.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Surface.Presentation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.Surface.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Surface.Presentation.Generic, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.Surface.Presentation.Generic.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringRoll.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\SpringRoll.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="Controls\DrawingFeedback.cs" />
+    <Compile Include="Controls\Lasso.cs" />
+    <Compile Include="Controls\LassoRelative.cs" />
+    <Compile Include="Controls\OptionSelector.xaml.cs">
+      <DependentUpon>OptionSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PenMenuControl.cs" />
+    <Compile Include="Controls\PenMenuEx.cs" />
+    <Compile Include="Controls\PenMenuItemChanged.cs" />
+    <Compile Include="Controls\SelectionBox.cs" />
+    <Compile Include="Controls\SyncBehaviorStatus.cs" />
+    <Compile Include="Controls\DrawingBoardParam.cs" />
+    <Compile Include="DataContracts\DrawingAttributesData.cs" />
+    <Compile Include="DataContracts\DrawingboardData.cs" />
+    <Compile Include="DataContracts\StrokeData.cs" />
+    <Compile Include="DataContracts\StylusPointData.cs" />
+    <Compile Include="Drawingboard.xaml.cs">
+      <DependentUpon>Drawingboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DrawingboardVM.cs" />
+    <Compile Include="Helper\DrawingAttributesDataEx.cs" />
+    <Compile Include="Helper\IShapeHost.cs" />
+    <Compile Include="Helper\JsonHelper.cs" />
+    <Compile Include="Helper\PointDataEx.cs" />
+    <Compile Include="Helper\ScaleSyncDataHelper.cs" />
+    <Compile Include="Helper\StringEx.cs" />
+    <Compile Include="Helper\StrokeDataEx.cs" />
+    <Compile Include="Helper\StrokeEx.cs" />
+    <Compile Include="Helper\StrokeBuilder.cs" />
+    <Compile Include="MendStrokes\CuStrokes\ArrowStroke.cs" />
+    <Compile Include="MendStrokes\CuStrokes\CircleStroke.cs" />
+    <Compile Include="MendStrokes\CuStrokes\EllipseStroke.cs" />
+    <Compile Include="MendStrokes\CuStrokes\LineStroke.cs" />
+    <Compile Include="MendStrokes\CuStrokes\RectangleStroke.cs" />
+    <Compile Include="MendStrokes\CuStrokes\ShapeStroke.cs" />
+    <Compile Include="MendStrokes\CuStrokes\TriangleStroke.cs" />
+    <Compile Include="MendStrokes\GetAdjustShapeStroke.cs" />
+    <Compile Include="MendStrokes\ShapeCornerFinder.cs" />
+    <Compile Include="MendStrokes\ShapType.cs" />
+    <Compile Include="MendStrokes\StrokeInkAnalyzer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service.cs" />
+    <Compile Include="StrokeAnimation\AnimationEngine.cs" />
+    <Compile Include="StrokeAnimation\AnimationLibrary.cs" />
+    <Compile Include="StrokeAnimation\ExtensionMethods.cs" />
+    <Compile Include="StrokeAnimation\PoinsGroupAnalyzer.cs" />
+    <Compile Include="StrokeAnimation\StrokeAnalyzer.cs" />
+    <Compile Include="Wall.xaml.cs">
+      <DependentUpon>Wall.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\OptionSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Drawingboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Wall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKiosk\IKiosk.csproj">
+      <Project>{685bf58a-d885-4142-8044-93f03e3bdb25}</Project>
+      <Name>IKiosk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KComponents\KComponents.csproj">
+      <Project>{ec2bca96-e608-421e-a992-87a0b74486fa}</Project>
+      <Name>KComponents</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\blackboard_bg.png" />
+    <Resource Include="Assets\blackboard_wall_bg.png" />
+    <Resource Include="Assets\bluePenFeedback.png" />
+    <Resource Include="Assets\cyanPenFeedback.png" />
+    <Resource Include="Assets\eraserFeedback.png" />
+    <Resource Include="Assets\greyPenFeedback.png" />
+    <Resource Include="Assets\lassoFeedback.png" />
+    <Resource Include="Assets\panning.png" />
+    <Resource Include="Assets\penMenuO.png" />
+    <Resource Include="Assets\penMenuP.png" />
+    <Resource Include="Assets\purplePenFeedback.png" />
+    <Resource Include="Assets\redPenFeedback.png" />
+    <Resource Include="Assets\whiteBoard.png" />
+    <Resource Include="Assets\whitePenFeedback.png" />
+    <Resource Include="Assets\yellowPenFeedback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logic\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\animation\cancel_off.png" />
+    <Resource Include="Assets\animation\cancel_on.png" />
+    <Resource Include="Assets\animation\flash_off.png" />
+    <Resource Include="Assets\animation\flash_on.png" />
+    <Resource Include="Assets\animation\jump_off.png" />
+    <Resource Include="Assets\animation\jump_on.png" />
+    <Resource Include="Assets\animation\moveBottom_off.png" />
+    <Resource Include="Assets\animation\moveBottom_on.png" />
+    <Resource Include="Assets\animation\moveLeft_off.png" />
+    <Resource Include="Assets\animation\moveLeft_on.png" />
+    <Resource Include="Assets\animation\moveRight_off.png" />
+    <Resource Include="Assets\animation\moveRight_on.png" />
+    <Resource Include="Assets\animation\moveTop_off.png" />
+    <Resource Include="Assets\animation\moveTop_on.png" />
+    <Resource Include="Assets\animation\rotateLeft_off.png" />
+    <Resource Include="Assets\animation\rotateLeft_on.png" />
+    <Resource Include="Assets\animation\rotateRight_off.png" />
+    <Resource Include="Assets\animation\rotateRight_on.png" />
+    <Resource Include="Assets\animation\shakeHorizontal_off.png" />
+    <Resource Include="Assets\animation\shakeHorizontal_on.png" />
+    <Resource Include="Assets\animation\squeezeHorizontal_off.png" />
+    <Resource Include="Assets\animation\squeezeHorizontal_on.png" />
+    <Resource Include="Assets\animation\squeezeVertical_off.png" />
+    <Resource Include="Assets\animation\squeezeVertical_on.png" />
+    <Resource Include="Assets\animation\swingBottom_off.png" />
+    <Resource Include="Assets\animation\swingBottom_on.png" />
+    <Resource Include="Assets\animation\swingLeft_off.png" />
+    <Resource Include="Assets\animation\swingLeft_on.png" />
+    <Resource Include="Assets\animation\swingRight_off.png" />
+    <Resource Include="Assets\animation\swingRight_on.png" />
+    <Resource Include="Assets\animation\swingTop_off.png" />
+    <Resource Include="Assets\animation\swingTop_on.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)$(SolutionName)\$(OutDir)Modules" /Y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

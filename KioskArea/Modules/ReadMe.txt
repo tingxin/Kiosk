@@ -1,0 +1,1 @@
+﻿Please copy the command  xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)$(SolutionName)\$(OutDir)Modules" /Y to you project "Post Build Event" setting

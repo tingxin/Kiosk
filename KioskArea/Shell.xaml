@@ -1,0 +1,111 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:_3DTools="clr-namespace:_3DTools;assembly=3DTools" 
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:Controls="clr-namespace:KioskArea.Controls"
+        xmlns:component="clr-namespace:KComponents;assembly=KComponents"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="KioskArea.Shell"
+        WindowStyle="None" WindowState="Maximized"
+        x:Name="kioskShell" Stylus.IsPressAndHoldEnabled="False"
+        Title="Shell" Height="1080" Width="1920" Background="#4CFFFFFF">
+    <Window.Resources>
+        <Color x:Key="presentationbg">#7FFFFFFF</Color>
+        <LinearGradientBrush x:Key="presentationcover" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFADC4EE" Offset="0"/>
+            <GradientStop Color="#FF9797E6" Offset="1"/>
+        </LinearGradientBrush>
+        <ImageBrush x:Key="mainBrush" ImageSource="Assets/mainbg.png"/>
+    </Window.Resources>
+    <Viewbox Stretch="Fill">
+        <Grid x:Name="gdRoot" Background="{DynamicResource mainBrush}" Height="1080" Width="1920">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="bar" Margin="0,0,0,-100">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="CoCreate Kiosk for Cisco Live" VerticalAlignment="Center" FontSize="36" Foreground="White" Margin="25,0,0,0" FontFamily="/KioskArea;component/Fonts/#Helvetica"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,25,0" Grid.Column="1">
+                    <TextBlock x:Name="txtDate" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Jan 15, 2014" VerticalAlignment="Center" FontSize="36" Foreground="White" Margin="0,0,10,0" FontFamily="/KioskArea;component/Fonts/#Helvetica"/>
+                    <!--<Image x:Name="imgWeather" Width="60" Height="46" Margin="0,0,10,0" VerticalAlignment="Center" Source="Assets/cloudy.png"  />-->
+                </StackPanel>
+
+                <TextBlock  x:Name="txtCurrentName" VerticalAlignment="Top"  FontSize="53.333" HorizontalAlignment="Center" Text="Doodling" Foreground="White" Grid.Row="1" Grid.ColumnSpan="2" FontFamily="/KioskArea;component/Fonts/#Helvetica"/>
+            </Grid>
+
+            <_3DTools:Interactive3DDecorator Grid.Row="1">
+                <Viewport3D x:Name="viewport3D">
+                    <Viewport3D.Camera>
+                        <PerspectiveCamera Position="0,0,10"/>
+                    </Viewport3D.Camera>
+                    <ModelVisual3D>
+                        <ModelVisual3D.Content>
+                            <AmbientLight Color="LightBlue"/>
+                        </ModelVisual3D.Content>
+                    </ModelVisual3D>
+                </Viewport3D>
+            </_3DTools:Interactive3DDecorator>
+            <Grid x:Name="gdAnimationView" HorizontalAlignment="Center"  VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False" Grid.RowSpan="3">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Rectangle x:Name="recBack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="0" RadiusX="10" RadiusY="10" Fill="#7FFFFFFF" Visibility="Collapsed"/>
+            </Grid>
+            <Grid x:Name="bottom" Height="130" VerticalAlignment="Top" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.8*"/>
+                    <ColumnDefinition Width="6.4*"/>
+                    <ColumnDefinition Width="1.8*"/>
+                </Grid.ColumnDefinitions>
+                <Path x:Name="pathMark" Data="M1.5999999,1.3333333 L1146.6001,2.3231292 C1151,1.6564625 1096.6527,109.66314 1096.6527,109.66314 1089.6537,123.72371 1087.6984,129.66314 1076.6527,129.66314 L67.603292,129.66247 C56.557597,129.66247 51.602735,124.71351 47.602538,112.83598 47.602538,112.83598 0.60038528,0.33333333 1.5999999,1.3333333 z" Fill="White" Stretch="Fill" Stroke="Black" StrokeThickness="0" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Margin="0,-90,0,60" >
+                    <Path.OpacityMask>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#00000000" Offset="0"/>
+                            <GradientStop Color="#7FFFFFFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Path.OpacityMask>
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform Y="1.6659999999999968"/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <StackPanel x:Name="stkIndicator"  VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1"/>
+
+                <Grid Margin="0,0,-50,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image HorizontalAlignment="Right" VerticalAlignment="Center" Source="Assets/qrcode.png" Height="100" Stretch="Uniform" Panel.ZIndex="0" Grid.Row="2"/>
+                    <StackPanel Grid.ColumnSpan="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0">
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White"  FontSize="32"><Run Text="SCAN ME"/></TextBlock>
+                        <TextBlock TextWrapping="Wrap" Text="to connect your device" FontSize="21.333" Foreground="White"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <component:KMenu x:Name="kioskMenu" Width="400" Height="400" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.RowSpan="3" Margin="0,0,0,70"/>
+
+            <Grid x:Name="FullScreenPanel" Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False"/>
+
+        </Grid>
+    </Viewbox>
+</Window>
